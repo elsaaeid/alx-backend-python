@@ -1,18 +1,19 @@
 #!/usr/bin/env python3
 """Defines Type checking"""
-from typing import Tuple, List
+from typing import List, Tuple
 
-def zoom_array(lst: Tuple[int, ...], factor: int = 2) -> Tuple[int, ...]:
+
+def zoom_array(lst: Tuple, factor: int = 2) -> List:
     """Type Checking Exercise"""
-    zoomed_in: List[int] = [
+    zoomed_in: List = [
         item for item in lst
-        for i in range(factor)
+        for i in range(int(factor))
     ]
-    return tuple(zoomed_in)
+    return zoomed_in
 
 
-array: Tuple[int, int, int] = (12, 72, 91)
+array = (12, 72, 91)
 
-zoom_2x: Tuple[int, int, int, int, int, int] = zoom_array(array)
+zoom_2x = zoom_array(array)
 
-zoom_3x: Tuple[int, int, int, int, int, int, int, int, int] = zoom_array(array, 3)
+zoom_3x = zoom_array(array, 3)
