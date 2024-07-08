@@ -6,6 +6,7 @@ takes in an integer argument
 import asyncio
 import random
 
+
 async def wait_random(max_delay: int = 10) -> float:
     """
     An asynchronous coroutine that waits for a random delay
