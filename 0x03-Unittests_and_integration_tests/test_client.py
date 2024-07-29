@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
-""" Module for Testing client
+"""
+Module for Testing client
 """
 import unittest
 from unittest.mock import patch
 from parameterized import parameterized
 from client import GithubOrgClient
+
 
 class TestGithubOrgClient(unittest.TestCase):
   """Class that test git_hub_org_client"""
