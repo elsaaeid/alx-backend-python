@@ -13,18 +13,23 @@ from fixtures import TEST_PAYLOAD
 
 class TestGithubOrgClient(unittest.TestCase):
     """Class that tests git_hub_org_client"""
-
     @parameterized.expand([
-        ('google'),
-        ('abc')
+        ("google",),
+        ("abc",)
     ])
-    @patch('client.get_json')
-    def test_org(self, data, mock):
-        """Function that tests org"""
-        endpoint = 'https://api.github.com/orgs/{}'.format(data)
-        spec = GithubOrgClient(data)
-        spec.org()
-        mock.assert_called_once_with(endpoint)
+    @patch('client.GithubOrgClient.get_json')
+    def test_org(self, org_name, mock_get_json):
+        # Set up the mock response
+        mock_get_json.return_value = {'name': org_name}
+
+        # Create an instance of GithubOrgClient
+        client = GithubOrgClient(org_name)
+
+        # Call the org method and assert the result
+        result = client.org()
+        endpoint = f'https://api.github.com/orgs/{org_name}'
+        self.assertEqual(result, org_name)
+        mock_get_json.assert_called_once_with(endpoint)
 
     @parameterized.expand([
         ("random-url", {'repos_url': 'http://some_url.com'})
