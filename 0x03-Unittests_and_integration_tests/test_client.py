@@ -66,25 +66,23 @@ class TestGithubOrgClient(unittest.TestCase):
                       'expected_repos', 'apache2_repos'], TEST_PAYLOAD)
 class TestIntegrationGithubOrgClient(unittest.TestCase):
     """Class that tests Integration_github_org_client"""
-    @classmethod
-    def setUpClass(cls):
-      """Function that sets up class"""
-        cls.get_patcher = patch('requests.get', side_effect=[
-            cls.org_payload, cls.repos_payload
-        ])
-        cls.mocked_get = cls.get_patcher.start()
+    @patch('client.GithubOrgClient.get_json')
+    def test_public_repos(self, mock_get_json):
+        """Function that tests public repos"""
+        mock_get_json.return_value = TEST_PAYLOAD
+        client = GithubOrgClient("google")
+        result = client.public_repos()
+        self.assertEqual(result, ["episodes.dart"])
+        mock_get_json.assert_called_once_with("https://api.github.com/orgs/google/repos")
 
-    @classmethod
-    def tearDownClass(cls):
-      """Function that clears up class"""
-        cls.get_patcher.stop()
-
-    def test_public_repos(self):
-        """Function that tests public repos """
-
-    def test_public_repos_with_license(self):
-        """Function that tests public with license"""
-
+    @patch('client.GithubOrgClient.get_json')
+    def test_public_repos_with_license(self, mock_get_json):
+        """Function that tests public repos with license"""
+        mock_get_json.return_value = TEST_PAYLOAD
+        client = GithubOrgClient("google")
+        result = client.public_repos(license="apache-2.0")
+        self.assertEqual(result, [])
+        mock_get_json.assert_called_once_with("https://api.github.com/orgs/google/repos")
 
 if __name__ == '__main__':
     unittest.main()
