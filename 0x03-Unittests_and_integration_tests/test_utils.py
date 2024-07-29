@@ -8,14 +8,14 @@ from utils import access_nested_map, get_json, memoize
 
 
 class TestAccessNestedMap(unittest.TestCase):
-    ''' nested map test function '''
+    """Class that tests access_nested_map"""
     @parameterized.expand([
         ({"a": 1}, ("a",), 1),
         ({"a": {"b": 2}}, ("a",), {"b": 2}),
         ({"a": {"b": 2}}, ("a", "b"), 2)
     ])
     def test_access_nested_map(self, nested_map, path, expected):
-        ''' test access nested map '''
+        """Function that tests access_nested_map"""
         self.assertEqual(access_nested_map(nested_map, path), expected)
 
     @parameterized.expand([
@@ -23,24 +23,24 @@ class TestAccessNestedMap(unittest.TestCase):
         ({"a": 1}, ("a", "b"))
     ])
     def test_access_nested_map_exception(self, nested_map, path):
-        ''' test exception'''
+        """Function that tests exception"""
         with self.assertRaises(KeyError):
             access_nested_map(nested_map, path)
 
 
 class TestGetJson(unittest.TestCase):
-    ''' get json unittest '''
+    """Class that tests get_json"""
     @parameterized.expand([
         ("http://example.com", {"payload": True}),
         ("http://holberton.io", {"payload": False})
     ])
     def test_get_json(self, test_url, test_payload):
-        ''' self descriptive'''
+        """Function that tests get_json"""
         class Mocked(Mock):
-            ''' mocked class'''
+            """mocked class"""
 
             def json(self):
-                ''' json method mocked'''
+                """json method mocked"""
                 return test_payload
 
         with patch('requests.get') as MockClass:
@@ -49,13 +49,13 @@ class TestGetJson(unittest.TestCase):
 
 
 class TestMemoize(unittest.TestCase):
-    ''' memoize unittest '''
+    """Class that tests memoize"""
 
     def test_memoize(self):
-        ''' memoize test '''
+        """Function that tests memoize"""
 
         class TestClass:
-            ''' self descriptive'''
+            """Self descriptive"""
 
             def a_method(self):
                 return 42
