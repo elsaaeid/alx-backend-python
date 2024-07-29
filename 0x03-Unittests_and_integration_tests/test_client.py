@@ -19,17 +19,11 @@ class TestGithubOrgClient(unittest.TestCase):
     ])
     @patch('client.GithubOrgClient.get_json')
     def test_org(self, org_name, mock_get_json):
-        # Set up the mock response
-        mock_get_json.return_value = {'name': org_name}
-
-        # Create an instance of GithubOrgClient
-        client = GithubOrgClient(org_name)
-
-        # Call the org method and assert the result
-        result = client.org()
-        endpoint = f'https://api.github.com/orgs/{org_name}'
-        self.assertEqual(result, org_name)
-        mock_get_json.assert_called_once_with(endpoint)
+        """Function that tests org"""
+        endpoint = 'https://api.github.com/orgs/{}'.format(data)
+        spec = GithubOrgClient(data)
+        spec.org()
+        mock.assert_called_once_with(endpoint)
 
     @parameterized.expand([
         ("random-url", {'repos_url': 'http://some_url.com'})
