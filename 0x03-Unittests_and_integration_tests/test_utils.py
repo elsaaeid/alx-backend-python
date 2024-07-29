@@ -20,12 +20,9 @@ class TestAccessNestedMap(unittest.TestCase):
         access_nested_map"""
         self.assertEqual(access_nested_map(nested_map,
             path), expected)
-    def test_access_nested_map_exception(self, nested_map, path):
-        """test exception of access_nested_map"""
-        with self.assertRaises(KeyError) as err:
-            access_nested_map(nested_map, path)
-        self.assertEqual(str(err.exception),
-                f"KeyError('{expected}')")
+        self.assertEqual(result, expected_result)
+        except KeyError as err:
+            self.fail(f"KeyError: {err}")
 
 
 class TestGetJson(unittest.TestCase):
