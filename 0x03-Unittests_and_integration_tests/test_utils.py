@@ -15,7 +15,7 @@ class TestAccessNestedMap(unittest.TestCase):
         ({"a": {"b": 2}}, ("a", "b"), 2)
     ])
     def test_access_nested_map(self, nested_map,
-            path, expected_result):
+                               path, expected_result):
         """A function that tests
         access_nested_map"""
         result = access_nested_map(nested_map, path)
@@ -45,9 +45,9 @@ class TestMemoize(unittest.TestCase):
         """A function that tests memoize
         """
 
-
         class TestClass:
-            """A function that tests Class for wrapping with memoize"""
+            """A function that tests Class for
+            wrapping with memoize"""
 
             def a_method(self):
                 return 42
