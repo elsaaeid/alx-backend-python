@@ -18,11 +18,8 @@ class TestAccessNestedMap(unittest.TestCase):
             path, expected_result):
         """A function that tests
         access_nested_map"""
-        try:
-            result = access_nested_map(nested_map, path)
-            self.assertEqual(result, expected_result)
-        except KeyError as err:
-            self.fail(f"KeyError: {err}")
+        result = access_nested_map(nested_map, path)
+        self.assertEqual(result, expected_result)
 
 
 class TestGetJson(unittest.TestCase):
