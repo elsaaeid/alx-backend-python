@@ -18,9 +18,9 @@ class TestAccessNestedMap(unittest.TestCase):
             path, expected):
         """A function that tests
         access_nested_map"""
-        self.assertEqual(access_nested_map(nested_map,
-            path), expected)
-        self.assertEqual(result, expected_result)
+        try:
+            result = access_nested_map(nested_map, path)
+            self.assertEqual(result, expected_result)
         except KeyError as err:
             self.fail(f"KeyError: {err}")
 
