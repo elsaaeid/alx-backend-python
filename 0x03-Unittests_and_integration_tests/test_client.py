@@ -68,11 +68,9 @@ class TestGithubOrgClient(unittest.TestCase):
 
 class TestIntegrationGithubOrgClient(unittest.TestCase):
     """ Class for Integration test of fixtures """
-
     @classmethod
     def setUpClass(cls):
         """Class method called before tests in an individual class are run"""
-
         attr = {'return_value.json.side_effect':
                   [
                       cls.org_payload, cls.repos_payload,
@@ -102,7 +100,6 @@ class TestIntegrationGithubOrgClient(unittest.TestCase):
         self.assertEqual(test_class.public_repos(
             "apache-2.0"), self.apache2_repos)
         self.mock.assert_called()
-
     @classmethod
     def tearDownClass(cls):
         """Class method called after tests in an individual class have run"""
