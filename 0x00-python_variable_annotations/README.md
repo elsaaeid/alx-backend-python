@@ -4,7 +4,6 @@
  Python Variable Annotations: Enhancing Clarity and Type Checking 
 </h2>
 
-<img src="./image.png" />
 <ul>
   <li>
     Python variable annotations provide a powerful tool for enhancing code clarity and enabling more robust type checking.
@@ -22,3 +21,7 @@
     Embracing variable annotations in Python not only leads to more reliable code but also promotes better code maintenance and overall software quality.
   </li>
 </ul>
+
+The parse tree is formed from the above grammar to give better visualization of the syntax of the python’s function and function annotations.
+
+<img src="./image.png" />
