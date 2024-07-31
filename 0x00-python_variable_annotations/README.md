@@ -22,6 +22,6 @@
   </li>
 </ul>
 
-The parse tree is formed from the above grammar to give better visualization of the syntax of the python’s function and function annotations.
+<h3>The parse tree is formed from the above grammar to give better visualization of the syntax of the python’s function and function annotations.</h3>
 
 <img src="./image.png" />
